@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nikitha | Creative Space</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Michroma, Oxanium, Quantico -->
+    <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Oxanium:wght@200;400;600;800&family=Quantico:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class', // Manual dark mode
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'michroma': ['Michroma', 'sans-serif'],
+                        'oxanium': ['Oxanium', 'cursive'],
+                        'quantico': ['Quantico', 'sans-serif'],
+                    },
+                    colors: {
+                        'neon-purple': '#b026ff',
+                        'neon-blue': '#00f0ff', // Turquoise
+                        'deep-navy': '#0a0e17',
+                        'charcoal': '#121212',
+                        'glass-white': 'rgba(255, 255, 255, 0.05)',
+                        'glass-border': 'rgba(255, 255, 255, 0.1)',
+                    },
+                    backgroundImage: {
+                        'holographic': 'linear-gradient(135deg, rgba(176, 38, 255, 0.1) 0%, rgba(0, 240, 255, 0.1) 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Global Styles */
+        body {
+            background-color: #0a0e17; /* Deep Navy/Charcoal */
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0e17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+
+        /* Glassmorphism (Panels, Cards, Titles) */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Neumorphism (Buttons, Toggles) */
+        .neumorphic-btn {
+            background: #151922;
+            box-shadow: 5px 5px 10px #0b0d12, 
+                       -5px -5px 10px #1f2532;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        .neumorphic-btn:active {
+            box-shadow: inset 5px 5px 10px #0b0d12, 
+                        inset -5px -5px 10px #1f2532;
+        }
+        .neumorphic-inset {
+            background: #151922;
+            box-shadow: inset 5px 5px 10px #0b0d12, 
+                        inset -5px -5px 10px #1f2532;
+        }
+
+        /* Holographic Text Effect */
+        .holo-text {
+            background: linear-gradient(90deg, #b026ff, #00f0ff, #b026ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: holoFlow 5s linear infinite;
+        }
+
+        @keyframes holoFlow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        /* Glow Effects */
+        .neon-glow-hover:hover {
+            box-shadow: 0 0 15px rgba(176, 38, 255, 0.5), 
+                        0 0 30px rgba(0, 240, 255, 0.3);
+            border-color: rgba(0, 240, 255, 0.5);
+        }
+        
+        .neon-text-glow {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Image Gallery Hover (Ken Burns) */
+        .gallery-img-container {
+            overflow: hidden;
+        }
+        .gallery-img {
+            transition: transform 0.7s ease-in-out, filter 0.3s ease;
+        }
+        .gallery-img-container:hover .gallery-img {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+    </style>
+</head>
+<body class="font-oxanium selection:bg-neon-purple selection:text-white">
+
+    <!-- Background Elements (Subtle Motion) -->
+    <div class="fixed inset-0 -z-10 pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-neon-purple/10 rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-neon-blue/10 rounded-full blur-[100px] animate-pulse" style="animation-duration: 4s;"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-panel border-b-0 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#" class="text-2xl font-michroma tracking-widest text-white group">
+                    N<span class="text-neon-purple group-hover:text-neon-blue transition-colors">K</span>
+                </a>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center font-quantico uppercase tracking-wider text-sm">
+                    <a href="#home" class="text-gray-400 hover:text-neon-blue hover:neon-text-glow transition-all">Home</a>
+                    <a href="#timeline" class="text-gray-400 hover:text-neon-blue hover:neon-text-glow transition-all">Timeline</a>
+                    <a href="#gallery" class="text-gray-400 hover:text-neon-blue hover:neon-text-glow transition-all">Gallery</a>
+                    <a href="#quotes" class="text-gray-400 hover:text-neon-blue hover:neon-text-glow transition-all">Quotes</a>
+                    
+                    <!-- Neumorphic Connect Button -->
+                    <a href="#connect" class="neumorphic-btn px-6 py-2 rounded-full text-neon-purple hover:text-neon-blue font-bold text-xs tracking-widest flex items-center gap-2 group">
+                        <span>CONNECT</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="neumorphic-btn w-10 h-10 rounded-full flex items-center justify-center text-gray-300">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel absolute w-full left-0 border-t border-glass-border">
+            <div class="px-4 py-4 space-y-3 font-quantico text-center">
+                <a href="#home" class="block py-2 text-gray-300 hover:text-neon-blue">Home</a>
+                <a href="#timeline" class="block py-2 text-gray-300 hover:text-neon-blue">Timeline</a>
+                <a href="#gallery" class="block py-2 text-gray-300 hover:text-neon-blue">Gallery</a>
+                <a href="#quotes" class="block py-2 text-gray-300 hover:text-neon-blue">Quotes</a>
+                <a href="#connect" class="block py-2 text-neon-purple font-bold">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page 1: Home & Intro -->
+    <section id="home" class="min-h-screen pt-20 flex flex-col items-center justify-center relative px-4">
+        
+        <!-- Hero Card -->
+        <div class="glass-panel p-8 md:p-16 rounded-2xl max-w-4xl w-full text-center relative overflow-hidden group animate-float border-white/10">
+            <!-- Holographic Overlay -->
+            <div class="absolute inset-0 bg-holographic opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+            
+            <h2 class="font-quantico text-neon-blue text-sm md:text-base tracking-[0.2em] mb-4 uppercase">Portfolio</h2>
+            <h1 class="font-michroma text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                Welcome to my <br/>
+                <span class="holo-text">Creative Space</span>
+            </h1>
+            <p class="font-oxanium text-xl md:text-2xl text-gray-300 mb-2">
+                ...and I'm <span class="text-neon-purple font-bold">Nikitha</span>.
+            </p>
+            
+            <div class="mt-8 flex justify-center">
+                <a href="#intro" class="neumorphic-btn w-12 h-12 rounded-full flex items-center justify-center text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class="fas fa-chevron-down animate-bounce"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Spacer -->
+        <div class="h-32"></div>
+
+        <!-- Intro Section -->
+        <div id="intro" class="max-w-3xl mx-auto relative z-10">
+            <div class="glass-panel rounded-xl p-1 bg-gradient-to-r from-neon-purple/20 to-neon-blue/20">
+                <div class="bg-[#0a0e17] bg-opacity-90 rounded-lg p-8 md:p-12 text-center backdrop-blur-sm">
+                    <h3 class="font-michroma text-2xl mb-8 text-white border-b border-gray-800 inline-block pb-2">Intro</h3>
+                    <p class="font-oxanium text-lg md:text-xl leading-relaxed text-gray-400 text-justify md:text-center">
+                        Hi, I’m Nikitha. I like learning new things, thinking a lot, and exploring ideas at my own pace. 
+                        I enjoy good stories, taking pictures, spending time with nature, listening to music, learning tech and coding. 
+                        Just figuring things out as I go.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="h-32"></div>
+    </section>
+
+    <!-- Page 2: Past • Present • Future -->
+    <section id="timeline" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-michroma text-3xl md:text-4xl glass-panel inline-block px-8 py-4 rounded-full text-white neon-glow-hover transition-all duration-300">
+                    Past • Present • Future
+                </h2>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 relative">
+                <!-- Connecting Line (Desktop) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-gray-700 to-transparent -z-10"></div>
+
+                <!-- Past -->
+                <div class="group">
+                    <div class="glass-panel p-8 rounded-2xl h-full border-t-2 border-t-gray-600 hover:border-t-neon-purple transition-all duration-500 bg-[#0f1219]">
+                        <div class="w-12 h-12 neumorphic-inset rounded-full flex items-center justify-center mb-6 mx-auto text-gray-500 group-hover:text-neon-purple">
+                            <i class="fas fa-history"></i>
+                        </div>
+                        <h3 class="font-michroma text-xl text-center mb-2 text-gray-300">Past</h3>
+                        <p class="text-xs text-center font-quantico text-gray-500 mb-6 uppercase tracking-wider">Where I began</p>
+                        <p class="font-oxanium text-sm text-gray-400 leading-relaxed text-justify">
+                            I started my academic journey from <span class="text-neon-purple">Doveton Oakley</span> and <span class="text-neon-purple">Doveton Girls Hr. Sec. School (ICSE)</span>, building a strong academic foundation while discovering my creativity. I developed my interest in English accents during this time. I completed my schooling at <span class="text-neon-purple">Everwin Vidhyasharam CBSE</span>, scoring <strong class="text-white">94.2%</strong> in 10th and <strong class="text-white">89.4%</strong> in 12th grade (CS-group).
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Present -->
+                <div class="group transform md:-translate-y-4">
+                    <div class="glass-panel p-8 rounded-2xl h-full border-t-2 border-t-neon-blue shadow-[0_0_20px_rgba(0,240,255,0.1)]">
+                        <div class="w-16 h-16 neumorphic-btn rounded-full flex items-center justify-center mb-6 mx-auto text-neon-blue neon-text-glow">
+                            <i class="fas fa-dot-circle"></i>
+                        </div>
+                        <h3 class="font-michroma text-2xl text-center mb-2 text-white">Present</h3>
+                        <p class="text-xs text-center font-quantico text-neon-blue mb-6 uppercase tracking-wider">Where I am now</p>
+                        <p class="font-oxanium text-sm text-gray-300 leading-relaxed text-justify">
+                            Right now, I'm pursuing BS Data Science at <span class="text-neon-blue">IIT Madras</span> and B.E. CSE at <span class="text-neon-blue">Velammal Institute of Technology</span>. I am in a phase of exploration, understanding technology, creativity, and problem-solving. I like taking things step by step, allowing myself space to grow without rushing.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Future -->
+                <div class="group">
+                    <div class="glass-panel p-8 rounded-2xl h-full border-t-2 border-t-gray-600 hover:border-t-neon-purple transition-all duration-500 bg-gradient-to-b from-[#0f1219] to-[#1a1025]">
+                        <div class="w-12 h-12 neumorphic-inset rounded-full flex items-center justify-center mb-6 mx-auto text-gray-500 group-hover:text-neon-purple">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 class="font-michroma text-xl text-center mb-2 text-gray-300">Future</h3>
+                        <p class="text-xs text-center font-quantico text-gray-500 mb-6 uppercase tracking-wider">Where I'm headed</p>
+                        <p class="font-oxanium text-sm text-gray-400 leading-relaxed text-justify">
+                            My goal is to continue developing my technical and creative skills while working on projects that challenge and inspire me. I want to grow into opportunities where I can contribute, learn continuously, and shape ideas into impactful digital solutions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 3: Gallery -->
+    <section id="gallery" class="py-20 bg-black/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12">
+                <div>
+                    <h2 class="font-michroma text-3xl md:text-5xl text-white mb-2">Gallery</h2>
+                    <p class="font-quantico text-neon-purple text-sm tracking-widest uppercase">A collection of moments & visuals</p>
+                </div>
+                <div class="mt-4 md:mt-0">
+                    <!-- Neumorphic toggle example -->
+                    <div class="flex space-x-2">
+                         <button class="neumorphic-btn w-10 h-10 rounded-lg text-neon-blue"><i class="fas fa-th-large"></i></button>
+                         <button class="neumorphic-inset w-10 h-10 rounded-lg text-gray-600"><i class="fas fa-bars"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Grid (Placeholder for 100 images, showing 6 for demo) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image Item 1 -->
+                <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg aspect-w-4 aspect-h-3 h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1511447333015-45b65e60f6d5?auto=format&fit=crop&q=80&w=800" alt="Gallery 1" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Nature & Light</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Item 2 -->
+                <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Gallery 2" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Cyberpunk Vibe</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Item 3 -->
+                <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&q=80&w=800" alt="Gallery 3" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Motion</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Image Item 4 -->
+                 <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1501862700950-18381ac31490?auto=format&fit=crop&q=80&w=800" alt="Gallery 4" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Travels</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Image Item 5 -->
+                 <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="Gallery 5" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Abstract</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Image Item 6 -->
+                 <div class="glass-panel p-2 rounded-xl gallery-img-container cursor-pointer neon-glow-hover transition-all duration-300 group">
+                    <div class="overflow-hidden rounded-lg h-64 relative">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Gallery 6" class="gallery-img w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                            <span class="font-quantico text-neon-blue">Tech World</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                 <button class="neumorphic-btn px-8 py-3 rounded-full text-gray-400 hover:text-white font-quantico text-sm tracking-wider">
+                    LOAD MORE
+                 </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 4: Quotes -->
+    <section id="quotes" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="font-michroma text-3xl md:text-5xl text-white mb-8 text-right">
+                <span class="border-b-4 border-neon-purple pb-2">Quotes</span>
+            </h2>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="flex overflow-x-auto space-x-6 pb-8 snap-x">
+                <!-- Quote 1 -->
+                <div class="snap-center shrink-0 w-80 md:w-96 glass-panel p-6 rounded-2xl border-l-4 border-l-neon-purple bg-[#0f1219]">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1490730141103-6cac27aaab94?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500">
+                        <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <p class="font-michroma text-lg text-center shadow-black drop-shadow-lg">"Creativity takes courage."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 2 -->
+                <div class="snap-center shrink-0 w-80 md:w-96 glass-panel p-6 rounded-2xl border-l-4 border-l-neon-blue bg-[#0f1219]">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500">
+                         <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <p class="font-michroma text-lg text-center shadow-black drop-shadow-lg">"Simplicity is the ultimate sophistication."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quote 3 -->
+                <div class="snap-center shrink-0 w-80 md:w-96 glass-panel p-6 rounded-2xl border-l-4 border-l-neon-purple bg-[#0f1219]">
+                    <div class="h-48 rounded-lg overflow-hidden mb-4 relative">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover opacity-60 hover:opacity-100 transition-opacity duration-500">
+                         <div class="absolute inset-0 flex items-center justify-center p-4">
+                            <p class="font-michroma text-lg text-center shadow-black drop-shadow-lg">"Stay hungry, stay foolish."</p>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Placeholder for more -->
+                 <div class="snap-center shrink-0 w-48 flex items-center justify-center">
+                    <button class="w-16 h-16 neumorphic-btn rounded-full text-neon-blue">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect With Me -->
+    <section id="connect" class="py-20 flex items-center justify-center">
+        <div class="glass-panel p-1 rounded-2xl bg-gradient-to-br from-neon-blue/30 to-neon-purple/30 neon-glow-hover transition-all duration-500 transform hover:scale-105">
+            <div class="bg-[#0a0e17] rounded-xl p-10 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-purple via-neon-blue to-neon-purple"></div>
+                
+                <h2 class="font-michroma text-2xl mb-6 text-white">Connect With Me</h2>
+                <p class="font-oxanium text-gray-400 mb-8">You can connect with me through Instagram</p>
+                
+                <a href="https://instagram.com" target="_blank" class="neumorphic-btn px-8 py-4 rounded-xl text-white font-bold tracking-wider hover:text-neon-purple flex items-center justify-center gap-3 group">
+                    <i class="fab fa-instagram text-2xl group-hover:scale-110 transition-transform"></i>
+                    <span>@Instagram_Handle</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 glass-panel border-b-0 border-x-0">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="font-quantico text-gray-500 text-sm">
+                &copy; 2024 Nikitha. Crafted with <span class="text-neon-purple">♥</span> and Code.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+        
+        // Hide menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Smooth Scroll for standard anchor tags is handled by CSS (scroll-smooth), 
+        // but explicit JS can ensure better compatibility
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
